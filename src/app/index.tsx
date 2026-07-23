@@ -150,7 +150,7 @@ export default function ConversorTons() {
       
       <View style={styles.header}>
         <Text style={styles.titulo}>
-          Conversor de Tons
+          ToneTrader
         </Text>
       </View>
 
@@ -192,13 +192,10 @@ export default function ConversorTons() {
               </View>
             );
           })}
-
         </Animated.View>
 
         <View style={styles.indicadorCentro}>
-
           <ArcoCentro angulo={anguloArco}/>
-
           <View
             style={[
               styles.containerBraco,
@@ -207,7 +204,6 @@ export default function ConversorTons() {
           >
             <View style={styles.bracoLaranja}/>
           </View>
-
 
           <View
             style={[
@@ -221,9 +217,7 @@ export default function ConversorTons() {
           >
             <View style={styles.bracoLaranja}/>
           </View>
-
         </View>
-
 
       </View>
       <View style={styles.painelInfo}>
