@@ -1,4 +1,7 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import {
+  Dimensions,
+  StyleSheet,
+} from 'react-native';
 
 const { width } = Dimensions.get('window');
 
@@ -8,24 +11,40 @@ export const RAIO = TAMANHO_ROLETA / 2;
 const DISTANCIA_CENTRO = 28;
 
 export const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
     backgroundColor: '#040404',
-    alignItems: 'center',
-    paddingTop: 35,
   },
 
   header: {
     width: '100%',
-    paddingLeft: 20,
-    marginBottom: 30,
-    alignItems: 'flex-start',
+    backgroundColor: '#040404',
+    paddingHorizontal: 20,
+    paddingTop: 8,
+    paddingBottom: 12,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: '#2C2C2E',
   },
 
   titulo: {
-    fontSize: 26,
-    fontWeight: 'bold',
     color: '#FFFFFF',
+    fontSize: 34,
+    lineHeight: 41,
+    fontWeight: '700',
+    letterSpacing: 0.3,
+  },
+
+  scrollView: {
+    flex: 1,
+    backgroundColor: '#040404',
+  },
+
+  container: {
+    flexGrow: 1,
+    backgroundColor: '#040404',
+    alignItems: 'center',
+    paddingTop: 16,
+    paddingBottom: 115,
   },
 
   trianguloIndicador: {
@@ -39,7 +58,7 @@ export const styles = StyleSheet.create({
     borderLeftColor: 'transparent',
     borderRightColor: 'transparent',
     borderTopColor: '#FF0000',
-    marginBottom: 10,
+    marginBottom: 8,
     zIndex: 10,
   },
 
@@ -51,13 +70,13 @@ export const styles = StyleSheet.create({
   },
 
   roleta: {
+    position: 'absolute',
     width: TAMANHO_ROLETA,
     height: TAMANHO_ROLETA,
     borderRadius: RAIO,
     backgroundColor: '#B2B2B2',
     borderWidth: 1,
     borderColor: '#FFFFFF',
-    position: 'absolute',
     overflow: 'hidden',
   },
 
@@ -90,8 +109,21 @@ export const styles = StyleSheet.create({
     backgroundColor: '#636366',
     top: 0,
     left: RAIO - 0.5,
-    transform: [{ rotate: '15deg' }],
+    transform: [
+      {
+        rotate: '15deg',
+      },
+    ],
     transformOrigin: 'bottom',
+  },
+
+  indicadorCentro: {
+    position: 'absolute',
+    width: 80,
+    height: 80,
+    justifyContent: 'center',
+    alignItems: 'center',
+    overflow: 'visible',
   },
 
   containerBraco: {
@@ -106,15 +138,6 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     width: 50,
     height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    overflow: 'visible',
-  },
-
-  indicadorCentro: {
-    position: 'absolute',
-    width: 80,
-    height: 80,
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'visible',
@@ -181,6 +204,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     width: '90%',
     marginTop: 16,
+    marginBottom: 10,
   },
 
   slider: {
@@ -191,5 +215,6 @@ export const styles = StyleSheet.create({
 
   textoLimiteSlider: {
     color: '#8E8E93',
+    fontSize: 14,
   },
 });

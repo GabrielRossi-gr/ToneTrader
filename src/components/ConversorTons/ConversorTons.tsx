@@ -1,11 +1,15 @@
 import Slider from '@react-native-community/slider';
 import { useRef, useState } from 'react';
 import {
-    Animated,
-    PanResponder,
-    Text,
-    View,
+  Animated,
+  PanResponder,
+  ScrollView,
+  StatusBar,
+  Text,
+  View,
 } from 'react-native';
+
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
 
 import { styles } from './ConversorTons.styles';
@@ -169,11 +173,26 @@ export default function ConversorTons() {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.titulo}>ToneTrader</Text>
-      </View>
+  <SafeAreaView
+    style={styles.safeArea}
+    edges={['top']}
+  >
+    <StatusBar
+      barStyle="light-content"
+      backgroundColor="#040404"
+    />
 
+    <View style={styles.header}>
+      <Text style={styles.titulo}>
+        ToneTrader
+      </Text>
+    </View>
+
+    <ScrollView
+      style={styles.scrollView}
+      contentContainerStyle={styles.container}
+      showsVerticalScrollIndicator={false}
+    >
       <View style={styles.trianguloIndicador} />
 
       <View
@@ -194,7 +213,9 @@ export default function ConversorTons() {
                   styles.fatiaNota,
                   {
                     transform: [
-                      { rotate: `${angulo}deg` },
+                      {
+                        rotate: `${angulo}deg`,
+                      },
                     ],
                   },
                 ]}
@@ -208,7 +229,7 @@ export default function ConversorTons() {
             );
           })}
 
-          {/* Camada 2: notas menores */}
+          {/* Camada 2: notas alternativas */}
           {NOTAS2.map((nota, index) => {
             if (nota.trim() === '') {
               return null;
@@ -223,7 +244,9 @@ export default function ConversorTons() {
                   styles.fatiaNota,
                   {
                     transform: [
-                      { rotate: `${angulo}deg` },
+                      {
+                        rotate: `${angulo}deg`,
+                      },
                     ],
                   },
                 ]}
@@ -243,7 +266,11 @@ export default function ConversorTons() {
             style={[
               styles.containerBraco,
               {
-                transform: [{ rotate: '0deg' }],
+                transform: [
+                  {
+                    rotate: '0deg',
+                  },
+                ],
               },
             ]}
           >
@@ -256,8 +283,9 @@ export default function ConversorTons() {
               {
                 transform: [
                   {
-                    rotate:
-                      `${intervalo * ANGULO_POR_NOTA}deg`,
+                    rotate: `${
+                      intervalo * ANGULO_POR_NOTA
+                    }deg`,
                   },
                 ],
               },
@@ -274,6 +302,7 @@ export default function ConversorTons() {
           <Text style={styles.destaque}>
             {NOTAS[indiceNotaBase]}
           </Text>
+
           {notaBaseAlternativa !== ''
             ? ` (${notaBaseAlternativa})`
             : ''}
@@ -284,6 +313,7 @@ export default function ConversorTons() {
           <Text style={styles.destaqueDestino}>
             {NOTAS[indiceNotaDestino]}
           </Text>
+
           {notaDestinoAlternativa !== ''
             ? ` (${notaDestinoAlternativa})`
             : ''}
@@ -291,7 +321,9 @@ export default function ConversorTons() {
 
         <Text style={styles.textoSub}>
           Intervalo:{' '}
-          {intervalo > 0 ? `+${intervalo}` : intervalo}{' '}
+          {intervalo > 0
+            ? `+${intervalo}`
+            : intervalo}{' '}
           semitons
         </Text>
       </View>
@@ -310,13 +342,14 @@ export default function ConversorTons() {
           onValueChange={setIntervalo}
           minimumTrackTintColor="#8E8E93"
           maximumTrackTintColor="#8E8E93"
-          thumbTintColor="#FF0000"
+          thumbTintColor="#FF3B30"
         />
 
         <Text style={styles.textoLimiteSlider}>
           +12
         </Text>
       </View>
-    </View>
-  );
+    </ScrollView>
+  </SafeAreaView>
+);
 }
