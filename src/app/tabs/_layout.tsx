@@ -2,8 +2,8 @@ import { BlurView } from 'expo-blur';
 import { Tabs } from 'expo-router';
 import { SymbolView } from 'expo-symbols';
 import {
-    Platform,
-    StyleSheet,
+  Platform,
+  StyleSheet,
 } from 'react-native';
 
 export default function TabsLayout() {
@@ -60,29 +60,25 @@ export default function TabsLayout() {
       }}
     >
 
-      <Tabs.Screen
-        name="sobre"
-        options={{
-          title: 'Sobre',
-          tabBarAccessibilityLabel:
-            'Abrir informações sobre o aplicativo',
+    <Tabs.Screen
+    name="fotos"
+    options={{
+        title: 'Fotos',
 
-          tabBarIcon: ({ color, focused }) => (
-            <SymbolView
-              name={{
-                ios: focused
-                  ? 'info.circle.fill'
-                  : 'info.circle',
-                android: 'info',
-                web: 'info',
-              }}
-              tintColor={color}
-              size={25}
-              style={styles.icone}
-            />
-          ),
-        }}
-      />
+        tabBarIcon: ({ color, focused }) => (
+        <SymbolView
+            name={
+            focused
+                ? 'photo.fill'
+                : 'photo'
+            }
+            tintColor={color}
+            size={25}
+            style={styles.icone}
+        />
+        ),
+    }}
+    />
 
     <Tabs.Screen
     name="index"
@@ -99,7 +95,7 @@ export default function TabsLayout() {
             web: 'explore',
             }}
             tintColor={color}
-            size={26}
+            size={25}
             style={styles.icone}
         />
         ),
